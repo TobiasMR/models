@@ -254,7 +254,7 @@ may construct a an [`Optimizer`]
 (https://www.tensorflow.org/api_docs/python/train.html#optimizers) in TensorFlow
 that constructs the necessary graph for either case diagrammed below from
 TensorFlow [Whitepaper]
-(http://download.tensorflow.org/paper/whitepaper2015.pdf)):
+(http://download.tensorflow.org/paper/whitepaper2015.pdf):
 
 <div style="width:40%; margin:auto; margin-bottom:10px; margin-top:20px;">
   <img style="width:100%"
@@ -527,7 +527,7 @@ checkpoint. If you set this flag to true, you can train a new classification
 layer from scratch.
 
 In order to understand how `--fine_tune` works, please see the discussion on
-`Variables` in the TensorFlow-Slim [`README.md`](slim/README.md).
+`Variables` in the TensorFlow-Slim [`README.md`](inception/slim/README.md).
 
 Putting this all together you can retrain a pre-trained Inception-v3 model on
 the flowers data set with the following command.
@@ -583,13 +583,13 @@ FLOWERS_DATA_DIR=/tmp/flowers-data/
 EVAL_DIR=/tmp/flowers_eval/
 
 # Evaluate the fine-tuned model on a hold-out of the flower data set.
-blaze-bin/inception/flowers_eval \
+bazel-bin/inception/flowers_eval \
   --eval_dir="${EVAL_DIR}" \
   --data_dir="${FLOWERS_DATA_DIR}" \
   --subset=validation \
   --num_examples=500 \
   --checkpoint_dir="${TRAIN_DIR}" \
-  --input_queue_memory_factfor=1 \
+  --input_queue_memory_factor=1 \
   --run_once
 ```
 
@@ -664,7 +664,7 @@ bazel-bin/inception/build_image_data \
 ```
 
 where the `$OUTPUT_DIRECTORY` is the location of the sharded `TFRecords`. The
-`$LABELS_FILE` will be a text file that is outputted by the script that provides
+`$LABELS_FILE` will be a text file that is read by the script that provides
 a list of all of the labels. For instance, in the case flowers data set, the
 `$LABELS_FILE` contained the following data:
 

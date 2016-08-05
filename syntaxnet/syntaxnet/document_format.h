@@ -15,8 +15,8 @@ limitations under the License.
 
 // An interface for document formats.
 
-#ifndef $TARGETDIR_DOCUMENT_FORMAT_H__
-#define $TARGETDIR_DOCUMENT_FORMAT_H__
+#ifndef SYNTAXNET_DOCUMENT_FORMAT_H__
+#define SYNTAXNET_DOCUMENT_FORMAT_H__
 
 #include <string>
 #include <vector>
@@ -37,6 +37,8 @@ class DocumentFormat : public RegisterableClass<DocumentFormat> {
  public:
   DocumentFormat() {}
   virtual ~DocumentFormat() {}
+
+  virtual void Setup(TaskContext *context) {}
 
   // Reads a record from the given input buffer with format specific logic.
   // Returns false if no record could be read because we reached end of file.
@@ -60,4 +62,4 @@ class DocumentFormat : public RegisterableClass<DocumentFormat> {
 
 }  // namespace syntaxnet
 
-#endif  // $TARGETDIR_DOCUMENT_FORMAT_H__
+#endif  // SYNTAXNET_DOCUMENT_FORMAT_H__
